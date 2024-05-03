@@ -42,7 +42,7 @@ Citizen.CreateThread( function(source)
 			
 		end
 
-    TriggerClientEvent('updateNumbers', -1, AmbulanceConnected, PoliceConnected, MechanicConnected, BurgerShotConnected)  -- Sending data to all clients
+    TriggerClientEvent('scoreboard:update', -1, AmbulanceConnected, PoliceConnected, MechanicConnected, BurgerShotConnected)  -- Sending data to all clients
 
 		
 		Citizen.Wait(1000 * 1) -- Update Rate

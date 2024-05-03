@@ -2,15 +2,14 @@ RegisterCommand('scoreboard', function() lib.showContext('scoreboard') end, fals
 
 RegisterKeyMapping('scoreboard', 'Score Board', 'keyboard', 'F9')
 
-RegisterNetEvent('updateNumbers')
-AddEventHandler('updateNumbers', function(ambulanceCount, policeCount, mechanicCount, burgershotCount)
-    
+RegisterNetEvent('scoreboard:update', function(ambulanceCount, policeCount, mechanicCount, burgershotCount)
+
     local policeState = nil
     local ambulanceState = nil
     local mechanicState = nil
     local burgershotState = nil
-    
-   
+
+
     if policeCount > 0 then
         policeState = 'Active'
         policeON = false
@@ -43,7 +42,7 @@ AddEventHandler('updateNumbers', function(ambulanceCount, policeCount, mechanicC
         burgershotON = true
     end
 
-    
+
 
     lib.registerContext({
         id = 'scoreboard',
@@ -55,7 +54,7 @@ AddEventHandler('updateNumbers', function(ambulanceCount, policeCount, mechanicC
             readOnly = true,
             icon = 'user',
             iconColor = 'darkorange',
-    
+
             },
                 {
             title = 'Police',
@@ -64,7 +63,7 @@ AddEventHandler('updateNumbers', function(ambulanceCount, policeCount, mechanicC
             icon = 'shield-halved',
             iconColor = 'darkorange',
             disabled = policeON,
-    
+
             },
                 {
             title = 'Ambulance',
@@ -73,7 +72,7 @@ AddEventHandler('updateNumbers', function(ambulanceCount, policeCount, mechanicC
             icon = 'truck-medical',
             iconColor = 'darkorange',
             disabled = ambulanceON,
-    
+
             },
                 {
             title = 'Mechanic',
@@ -82,7 +81,7 @@ AddEventHandler('updateNumbers', function(ambulanceCount, policeCount, mechanicC
             icon = 'wrench',
             iconColor = 'darkorange',
             disabled = mechanicON,
-    
+
             },
                 {
             title = 'BurgerShot',
@@ -91,12 +90,8 @@ AddEventHandler('updateNumbers', function(ambulanceCount, policeCount, mechanicC
             icon = 'burger',
             iconColor = 'darkorange',
             disabled = burgershotON,
-    
+
             },
         }
     })
 end)
-  
-
-  
-  
