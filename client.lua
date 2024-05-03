@@ -1,6 +1,6 @@
-RegisterCommand('servicos', function() lib.showContext('scoreboard') end, false)
+RegisterCommand('scoreboard', function() lib.showContext('scoreboard') end, false)
 
-RegisterKeyMapping('servicos', 'Ver Serviços', 'keyboard', 'F9')
+RegisterKeyMapping('scoreboard', 'Ver Serviços', 'keyboard', 'F9')
 
 RegisterNetEvent('updateNumbers')
 AddEventHandler('updateNumbers', function(ambulanceCount, policeCount, mechanicCount, burgershotCount)
