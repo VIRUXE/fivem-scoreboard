@@ -1,6 +1,4 @@
-RegisterCommand('servicos', function()
-    lib.showContext('some_menu')
-end)
+RegisterCommand('servicos', function() lib.showContext('scoreboard') end, false)
 
 RegisterKeyMapping('servicos', 'Ver Serviços', 'keyboard', 'F9')
 
@@ -48,7 +46,7 @@ AddEventHandler('updateNumbers', function(ambulanceCount, policeCount, mechanicC
     
 
     lib.registerContext({
-        id = 'some_menu',
+        id = 'scoreboard',
         title = 'Tagus RP',
         options = {
             {
