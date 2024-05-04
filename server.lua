@@ -1,50 +1,14 @@
-ESX = nil
+local LastRequest = {} -- Holds when was a player's last request for "job count"
 
-ESX = exports["es_extended"]:getSharedObject()
+ESX.RegisterServerCallback('scoreboard:getCount', function(playerId, cb)
+	local requestTime = GetGameTimer()
 
-local ShowNumbers = true
+	if not LastRequest[playerId] then LastRequest[playerId] = nil end
 
-Citizen.CreateThread( function(source)
-	local xPlayers = ESX.GetPlayers()
-	while true do
-		xPlayers = ESX.GetPlayers()
-  
-			AmbulanceConnected = 0
-			PoliceConnected = 0
-			BurgerShotConnected = 0
-			UnicornConnected = 0
-			GangsConnected = 0
-			MechanicConnected = 0
-			LawyerConnected = 0
+	-- Basic flood prevention
+	if LastRequest[playerId] and requestTime - LastRequest[playerId] < Config.CountRequestThreshold then cb(false) end
 
-		
-		for i=1, #xPlayers, 1 do
-			local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-			
-			if xPlayer.job.name == 'ambulance' then
-				AmbulanceConnected = AmbulanceConnected + 1
-			end	
-			
-			if xPlayer.job.name == 'police' then
-				PoliceConnected = PoliceConnected + 1
-			end	
-			
-			if xPlayer.job.name == 'burgershot' then
-				BurgerShotConnected = BurgerShotConnected + 1
-			end
-			
-			if xPlayer.job.name == 'mechanic' then
-				MechanicConnected = MechanicConnected + 1
-			end
-			
+	LastRequest[playerId] = requestTime
 
-
-			
-		end
-
-    TriggerClientEvent('scoreboard:update', -1, AmbulanceConnected, PoliceConnected, MechanicConnected, BurgerShotConnected)  -- Sending data to all clients
-
-		
-		Citizen.Wait(1000 * 1) -- Update Rate
-	end
+	cb(ESX.GetNumPlayers("job", JOBS))
 end)
