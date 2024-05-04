@@ -3,8 +3,7 @@ game 'gta5'
 lua54 'yes'
 version '1.0'
 
-name 'Tagus RP'
-author 'Tagus RP'
+author 'slicedbrain'
 description 'Simple Scoreboard using OX LIB'
 
 shared_scripts {
@@ -12,13 +11,6 @@ shared_scripts {
     '@es_extended/imports.lua',
 }
 
-client_scripts {
-    'client/*.lua',
-}
+client_script 'client/*.lua'
 
-server_scripts {
-    '@oxmysql/lib/MySQL.lua',
-    'server/*.lua'
-}
-
-
+server_script 'server.lua'
