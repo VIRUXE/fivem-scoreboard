@@ -9,8 +9,7 @@ description 'Simple Scoreboard using OX LIB'
 shared_scripts {
     '@ox_lib/init.lua',
     '@es_extended/imports.lua',
-	'config.lua',
-	'shared.lua'
+	'config.lua'
 }
 
 client_script 'client.lua'

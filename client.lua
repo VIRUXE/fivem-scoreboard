@@ -2,6 +2,8 @@
 -- If you don't want to, then just set the default to how many slots you have
 local MAX_PLAYERS = GetConvarInt('sv_maxclients', Config.MaxClients)
 
+local JOBS = {}
+
 local Options = {
 	players = {
 		title       = 'Players Online',
@@ -12,6 +14,9 @@ local Options = {
 		disabled    = true
 	}
 }
+
+-- Get the job names from the server
+ESX.TriggerServerCallback("scoreboard:getJobs", function(jobs) JOBS = jobs end)
 
 -- Generate options for the context menu
 for jobName, jobData in pairs(Config.Jobs) do
