@@ -1,4 +1,6 @@
-local MAX_PLAYERS = GetConvarInt('sv_maxclients', 48) -- * Note: this directive must be set as "setr", in order for the clients to have access to it
+-- * Note: this directive must be set as "setr", in order for the clients to have access to it
+-- If you don't want to, then just set the default to how many slots you have
+local MAX_PLAYERS = GetConvarInt('sv_maxclients', Config.MaxClients)
 
 local Options = {
 	players = {
