@@ -66,4 +66,4 @@ RegisterCommand('scoreboard', function()
 	end)
 end, false)
 
-RegisterKeyMapping('scoreboard', 'Score Board', 'keyboard', 'F9')
+RegisterKeyMapping('scoreboard', 'Score Board', 'keyboard', Config.Key or 'F9')
