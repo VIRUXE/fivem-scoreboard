@@ -11,7 +11,7 @@ local Options = {
 		icon        = 'user',
 		iconColor   = 'white',
 		readOnly    = true,
-		disabled    = true
+		disabled    = false
 	}
 }
 
